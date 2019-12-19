@@ -16,6 +16,7 @@ namespace MVC_Basics
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(); // add MVC so we can use it
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,14 +27,22 @@ namespace MVC_Basics
                 app.UseDeveloperExceptionPage();
             }
 
+
+            // app.UseDefaultFiles();  // looks for index.html or default.html in wwwroot folder
+            app.UseStaticFiles();  // default opens up the wwwroot folder to be accessed
+
             app.UseRouting();
+
+
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                // special routes before default
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                // endpoints.MapGet("/", async context =>         Hur vi routar med version 3.0 - Det utkommenterade är färdig default-text
+                // {
+                //    await context.Response.WriteAsync("Hello World!");
+                // });
             });
         }
     }

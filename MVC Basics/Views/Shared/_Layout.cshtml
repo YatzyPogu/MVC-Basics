@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Home")">About</a>
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+                <li>
+                    <a asp-action="Projects" asp-controller="Home">Projects</a>
+                </li>
+                <li>
+                    <img src="~/img/Logo_Ulvas.jpg" alt="Logga">
+                </li> 
+            </ul>
+        </nav>
+    </header>
+    
+    <hr />
+
+    <div>
+        @RenderBody()
+    </div>
+    <hr />
+    <footer>
+        <p>Ola Ulvås &copy; @DateTime.Now.Date</p>
+    </footer>
+</body>
+</html>
