@@ -10,20 +10,25 @@
     <header>
         <nav>
             <ul>
+
                 <li>
-                    <a href="@Url.Action("Index", "Home")">About</a>
+                    <a href="@Url.Action("About", "Home")">About</a>
                 </li>
                 <li>
                     @Html.ActionLink("Contact", "Contact", "Home")
-                </li> 
+                </li>
 
                 <li>
                     <a asp-action="Projects" asp-controller="Home">Projects</a>
                 </li>
+
                 <li>
-                    <img src="~/img/Logo_Ulvas.jpg" alt="Logga">
-                </li> 
+                    <a asp-action="Index" asp-controller="Home">Index</a>
+                </li>
+
+
             </ul>
+            <img src="~/img/Logo_Ulvas.jpg" alt="Logga">
         </nav>
     </header>
     
@@ -34,7 +39,7 @@
     </div>
     <hr />
     <footer>
-        <p>Ola Ulvås &copy; @DateTime.Now.Date</p>
+        <p>Ola Ulvås &copy; @DateTime.Now</p>
     </footer>
 </body>
 </html>
