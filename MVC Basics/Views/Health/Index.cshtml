@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="text-center" class="col-md-12">
+        
+        <h1>How are you today?</h1>
+        <h1>Your temperature please</h1>
+        <p>@ViewBag.Message</p>
+        @using (Html.BeginForm()) 
+        {
+            <input type="number" name="temp"/>
+            
+            <input type="submit" class="btn btn-Primary" value="Tryck"/>
+        
+        
+        }
+
+
+
+    </div>

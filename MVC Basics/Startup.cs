@@ -37,7 +37,9 @@ namespace MVC_Basics
 
             app.UseEndpoints(endpoints =>
             {
+
                 // special routes before default
+                endpoints.MapControllerRoute("FerverCheck", "{controller=Health}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 // endpoints.MapGet("/", async context =>         Hur vi routar med version 3.0 - Det utkommenterade är färdig default-text
                 // {
