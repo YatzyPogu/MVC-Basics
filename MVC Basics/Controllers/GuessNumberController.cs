@@ -23,29 +23,36 @@ namespace MVC_Basics.Controllers
         [HttpPost]
         public IActionResult Index(int num)
         {
-            
 
-                if (num == 0 || num > 100 || num < 1)
+
+            if (num == 0 || num > 100 || num < 1)
+            {
+                ViewBag.Message = "Try again!";
+            }
+            else
+            {
+                int? theNumber = HttpContext.Session.GetInt32("HiddenNr");
+
+                if (theNumber == null)
                 {
-                    ViewBag.Message = "Try again!";
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    int? theNumber = HttpContext.Session.GetInt32("HiddenNr");
-
-                    if (theNumber == null)
+                    string result = NumberWizard.Guessing((int)theNumber, num);
+                    
+                    if (result.Equals("Congratulation! - Guess again")) 
                     {
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ViewBag.Message = NumberWizard.Guessing((int)theNumber, num);
+                        HttpContext.Session.SetInt32("HiddenNr", NumberWizard.Magic());
                     }
 
+                    ViewBag.Message = result;
                 }
-            
-            
-           
+
+            }
+
+
+
 
             return View();
         }

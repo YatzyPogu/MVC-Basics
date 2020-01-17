@@ -32,9 +32,8 @@ namespace MVC_Basics.Models
                 }
                 else
                 {
-
-                    NumberWizard.Magic();
-                    return "Congratulation!";
+                
+                    return "Congratulation! - Guess again";
 
 
             }
