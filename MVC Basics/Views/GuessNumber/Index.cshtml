@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="text-center col-md-12">
+
+        <h1>Guess a number between 1 and 100:</h1>
+        
+        <p>@ViewBag.Message</p>
+        @using (Html.BeginForm())
+        {
+            <input type="number" name="num" />
+
+            <input type="submit" class="btn btn-Primary" value="Guess" />
+
+
+        }
+
+
+
+    </div>
