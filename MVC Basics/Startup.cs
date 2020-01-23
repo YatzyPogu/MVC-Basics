@@ -54,6 +54,7 @@ namespace MVC_Basics
             {
 
                 // special routes before default
+                endpoints.MapControllerRoute("People", "{controller=PeopleView}/{action=PeopleIndex}/{id?}");
                 endpoints.MapControllerRoute("GuessingGame", "{controller=GuessNumber}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("FeverCheck", "{controller=Health}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
