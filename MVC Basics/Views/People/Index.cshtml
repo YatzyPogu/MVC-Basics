@@ -1,0 +1,130 @@
+﻿
+@model List<PeopleModel>
+@{
+    ViewData["Title"] = "People Index";
+}
+
+<h1>People Index</h1>
+<a asp-action="Create">Add</a>
+
+
+<form asp-action="Delete">
+    <table>
+
+        @*<thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Number
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th></th>
+                </tr>
+        </thead>*@
+        <tbody>
+            @foreach (PeopleModel person in Model)
+            {
+                <tr>
+                    <td>
+                        @person.Name
+                    </td>
+                    <td>
+                        @person.PhoneNumber
+                    </td>
+                    <td>
+                        @person.City
+                        @person.Id
+                        <input type="button" onclick="location.href = '@Url.Action("Delete", new { id = person.Id})'" name="button" value="Delete" />
+                    </td>
+
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+  
+</form>
+
+<form asp-action="Filter">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Number
+                </th>
+                <th>
+                    City
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                    @*<input type="button" onclick="location.href = '@Url.Action("Delete", new { id = person.Id})'" name="button" value="Delete" />*@
+                </td>
+                <td>
+                </td>
+              
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+
+                    <input type="button" onclick="location.href = '@Url.Action("Filter", new { gubbe = item.search})'" name="button" value="Search" />
+                </form>
+            </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
+@*<div>
+
+
+    @foreach (PeopleModel person in Model)
+    {
+        <div id="@("personId" + person.Id)">
+
+            <p>Name: @person.Name</p>
+            <p>Phone Number: @person.PhoneNumber</p>
+            <p>City: @person.City</p>
+
+        </div>
+        <a asp-action="Remove" asp-route-id="@person.Id">Remove</a>
+
+    }
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    <a asp-action="Filter">Filter</a>
+    <a asp-action="Sort">Sort</a>
+
+    </div>*@

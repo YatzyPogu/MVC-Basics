@@ -54,9 +54,17 @@ namespace MVC_Basics
             {
 
                 // special routes before default
-                endpoints.MapControllerRoute("People", "{controller=PeopleView}/{action=PeopleIndex}/{id?}");
-                endpoints.MapControllerRoute("GuessingGame", "{controller=GuessNumber}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("FeverCheck", "{controller=Health}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "GuessingGame",
+                    pattern: "GuessingGame",
+                    defaults: new { Controller= "GuessNumber", Action="Index"}
+                    );
+                endpoints.MapControllerRoute(
+                    name: "FeverRule",
+                    pattern: "FeverCheck",
+                    defaults: new { Controller = "Health", Action = "Index" }
+                    );
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 // endpoints.MapGet("/", async context =>         Hur vi routar med version 3.0 - Det utkommenterade är färdig default-text
                 // {
